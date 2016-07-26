@@ -15,8 +15,8 @@
   },
   "extra": {
 	"map":[
-		['app/code/local/Inklammern/RewritePlus', 'app/code/local/Inklammern/RewritePlus'],
-		['app/etc/modules/Inklammern_RewritePlus.xml', 'app/etc/modules/Inklammern_RewritePlus.xml']
+		["app/code/local/Inklammern/RewritePlus", "app/code/local/Inklammern/RewritePlus"],
+		["app/etc/modules/Inklammern_RewritePlus.xml", 'app/etc/modules/Inklammern_RewritePlus.xml"]
 	]
   }
 }
