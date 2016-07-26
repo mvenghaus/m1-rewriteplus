@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Inklammern_RewritePlus>
+            <version>0.2.0</version>
+        </Inklammern_RewritePlus>
+    </modules>
+    <global>
+        <models>
+            <inklammern_rewriteplus>
+                <class>Inklammern_RewritePlus_Model</class>
+                <resourceModel>inklammern_rewriteplus_resource</resourceModel>
+            </inklammern_rewriteplus>
+            <inklammern_rewriteplus_resource>
+                <class>Inklammern_RewritePlus_Model_Resource</class>
+                <entities>
+                    <rewriteplus_pages>
+                        <table>rewriteplus_pages</table>
+                    </rewriteplus_pages>
+                </entities>
+            </inklammern_rewriteplus_resource>
+
+            <!-- Bubble Version -->
+            <catalog>
+                <rewrite>
+                    <layer_filter_item>Inklammern_RewritePlus_Model_Bubble_Catalog_Layer_Filter_Item</layer_filter_item>
+                </rewrite>
+            </catalog>
+        </models>
+        <blocks>
+            <inklammern_rewriteplus>
+                <class>Inklammern_RewritePlus_Block</class>
+            </inklammern_rewriteplus>
+        </blocks>
+        <helpers>
+            <inklammern_rewriteplus>
+                <class>Inklammern_RewritePlus_Helper</class>
+            </inklammern_rewriteplus>
+        </helpers>
+        <resources>
+            <inklammern_rewriteplus_setup>
+                <setup>
+                    <module>Inklammern_RewritePlus</module>
+                </setup>
+            </inklammern_rewriteplus_setup>
+        </resources>
+        <events>
+            <controller_front_init_before>
+                <observers>
+                    <inklammern_rewriteplus>
+                        <type>singleton</type>
+                        <class>inklammern_rewriteplus/observer</class>
+                        <method>controller_front_init_before</method>
+                    </inklammern_rewriteplus>
+                </observers>
+            </controller_front_init_before>
+
+            <controller_action_layout_generate_blocks_after>
+                <observers>
+                    <inklammern_rewriteplus>
+                        <class>inklammern_rewriteplus/observer</class>
+                        <method>controller_action_layout_generate_blocks_after</method>
+                    </inklammern_rewriteplus>
+                </observers>
+            </controller_action_layout_generate_blocks_after>
+        </events>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Inklammern_RewritePlus after="Mage_Adminhtml">Inklammern_RewritePlus_Adminhtml</Inklammern_RewritePlus>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+
+        <translate>
+            <modules>
+                <inklammern_rewriteplus>
+                    <files>
+                        <default>Inklammern_RewritePlus.csv</default>
+                    </files>
+                </inklammern_rewriteplus>
+            </modules>
+        </translate>
+
+        <menu>
+            <catalog>
+                <children>
+                    <inklammern_rewriteplus module="inklammern_rewriteplus">
+                        <title>Rewrite Plus</title>
+                        <sort_order>32</sort_order>
+                        <action>adminhtml/rewritePlus_index/index</action>
+                    </inklammern_rewriteplus>
+                </children>
+            </catalog>
+        </menu>
+
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <inklammern_rewriteplus>
+                            <title>Rewrite Plus</title>
+                        </inklammern_rewriteplus>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+
+</config>

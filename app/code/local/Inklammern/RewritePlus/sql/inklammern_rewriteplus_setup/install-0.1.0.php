@@ -9,7 +9,7 @@ $installer->run("
 DROP TABLE IF EXISTS `rewriteplus_pages`;
 CREATE TABLE `rewriteplus_pages` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `store_id` INT NOT NULL DEFAULT 0,
+  `store_ids` VARCHAR (255) NOT NULL,
   `request_uri_match` VARCHAR (255) NOT NULL,
   `request_uri_original` VARCHAR (255) NOT NULL,
   `title` VARCHAR (255),
@@ -18,10 +18,12 @@ CREATE TABLE `rewriteplus_pages` (
   `meta_title` TEXT,
   `meta_description` TEXT,
   `meta_keywords` TEXT,
+  `meta_robots` VARCHAR (255),
+  `meta_canonical` TEXT,
   `status` TINYINT,
   `created_at` DATETIME,
   PRIMARY KEY (`id`),
-  INDEX (`store_id`),
+  INDEX (`store_ids`),
   INDEX (`request_uri_match`),
   INDEX (`status`)
 );
