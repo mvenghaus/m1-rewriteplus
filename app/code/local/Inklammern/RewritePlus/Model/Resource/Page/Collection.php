@@ -8,4 +8,11 @@ class Inklammern_RewritePlus_Model_Resource_Page_Collection extends Mage_Core_Mo
         $this->_init('inklammern_rewriteplus/page');
     }
 
+
+    public function addStoreFilter($storeIds){
+
+        $this->addFieldToFilter('store_ids', array('finset' => $storeIds));
+
+        return $this;
+    }
 }

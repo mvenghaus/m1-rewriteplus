@@ -14,6 +14,12 @@ class Inklammern_RewritePlus_Block_Adminhtml_Page_Grid_Container_Grid extends Ma
     protected function _prepareCollection()
     {
         $collection = Mage::getModel('inklammern_rewriteplus/page')->getCollection();
+
+        foreach($collection as $page)
+        {
+            $page->setStoreIds(explode(',', $page->getStoreIds()));
+        }
+
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
@@ -37,6 +43,19 @@ class Inklammern_RewritePlus_Block_Adminhtml_Page_Grid_Container_Grid extends Ma
                 1 => $this->__('Enabled'),
             ]
         ]);
+
+        if (!Mage::app()->isSingleStoreMode()) {
+
+            $this->addColumn('store_ids', [
+                'header'        => $this->__('Store View'),
+                'index'         => 'store_ids',
+                'type'          => 'store',
+                'store_all'     => true,
+                'store_view'    => true,
+                'sortable'      => true,
+                'filter_condition_callback' => [$this, '_filterStoreCondition'],
+            ]);
+        }
 
         $this->addColumn('title', [
             'header' => $this->__('Title'),
@@ -72,7 +91,15 @@ class Inklammern_RewritePlus_Block_Adminhtml_Page_Grid_Container_Grid extends Ma
             'url' => $this->getUrl('*/*/massDelete'),
         ));
         return $this;
+    }
 
+
+    protected function _filterStoreCondition($collection, $column){
+        if (!$value = $column->getFilter()->getValue()) {
+            return;
+        }
+
+        $this->getCollection()->addStoreFilter($value);
     }
 
 }
