@@ -14,21 +14,23 @@
             <inklammern_rewriteplus_resource>
                 <class>Inklammern_RewritePlus_Model_Resource</class>
                 <entities>
-                    <rewriteplus_groups>
+                    <groups>
                         <table>rewriteplus_groups</table>
-                    </rewriteplus_groups>
-                    <rewriteplus_pages>
+                    </groups>
+                    <pages>
                         <table>rewriteplus_pages</table>
-                    </rewriteplus_pages>
+                    </pages>
                 </entities>
             </inklammern_rewriteplus_resource>
 
             <!-- Bubble Version -->
+            <!--
             <catalog>
                 <rewrite>
                     <layer_filter_item>Inklammern_RewritePlus_Model_Bubble_Catalog_Layer_Filter_Item</layer_filter_item>
                 </rewrite>
             </catalog>
+            -->
         </models>
         <blocks>
             <inklammern_rewriteplus>

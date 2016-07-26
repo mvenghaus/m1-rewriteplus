@@ -3,25 +3,21 @@
 class Inklammern_RewritePlus_Model_Observer
 {
 
-	private $matchHelper;
+    private $pageService;
 
-	public function __construct()
+    public function __construct()
 	{
-		$this->matchHelper = Mage::helper('inklammern_rewriteplus/match');
+		$this->pageService = Mage::getSingleton('inklammern_rewriteplus/service_page');
 	}
 
 
 	public function controller_front_init_before(Varien_Event_Observer $observer)
 	{
 
-		if ($this->matchHelper->isMatch())
+		if ($this->pageService->hasCurrent())
 		{
 			/** @var Mage_Core_Controller_Varien_Front $front */
-			$front = $observer->getEvent()->getFront();
-
-			$requestUriOriginal = $this->matchHelper->getMatchPage()->getRequestUriOriginal();
-
-			$front->getRequest()->setRequestUri($requestUriOriginal);
+            $observer->getEvent()->getFront()->getRequest()->setRequestUri($this->pageService->getCurrent()->getRequestUriOriginal());
 		}
 
 	}
@@ -30,19 +26,20 @@ class Inklammern_RewritePlus_Model_Observer
 	public function controller_action_layout_generate_blocks_after(Varien_Event_Observer $observer)
 	{
 
-		if ($this->matchHelper->isMatch())
+		if ($this->pageService->hasCurrent())
 		{
 			$layout = Mage::app()->getLayout();
-			$matchPage = $this->matchHelper->getMatchPage();
+			$page = $this->pageService->getCurrent();
 
 			// set metas
 			if ($block = $layout->getBlock('head'))
 			{
 				/** @var Mage_Page_Block_Html_Head $block */
 				$block
-					->setTitle($matchPage->getMetaTitle())
-					->setDescription($matchPage->getMetaDescription())
-					->setKeywords($matchPage->getMetaKeywords());
+					->setTitle($page->getMetaTitle())
+					->setDescription($page->getMetaDescription())
+					->setKeywords($page->getMetaKeywords())
+					->setRobots($page->getMetaRobots());
 			}
 
 			// change breadcrumbs
@@ -60,7 +57,7 @@ class Inklammern_RewritePlus_Model_Observer
 
 				$crumbs = [current($currentCrumbs)];
 				$crumbs[] = [
-					'label' => $matchPage->getTitle(),
+					'label' => $page->getTitle(),
 					'link' => '',
 					'title' => '',
 					'first' => '',

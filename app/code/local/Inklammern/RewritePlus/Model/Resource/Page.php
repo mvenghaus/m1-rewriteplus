@@ -5,7 +5,7 @@ class Inklammern_RewritePlus_Model_Resource_Page extends Mage_Core_Model_Resourc
 
     protected function _construct()
     {
-        $this->_init('inklammern_rewriteplus/rewriteplus_pages', 'id');
+        $this->_init('inklammern_rewriteplus/pages', 'id');
     }
 
 }
