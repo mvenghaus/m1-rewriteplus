@@ -14,6 +14,9 @@
             <inklammern_rewriteplus_resource>
                 <class>Inklammern_RewritePlus_Model_Resource</class>
                 <entities>
+                    <rewriteplus_groups>
+                        <table>rewriteplus_groups</table>
+                    </rewriteplus_groups>
                     <rewriteplus_pages>
                         <table>rewriteplus_pages</table>
                     </rewriteplus_pages>
@@ -96,7 +99,18 @@
                     <inklammern_rewriteplus module="inklammern_rewriteplus">
                         <title>Rewrite Plus</title>
                         <sort_order>32</sort_order>
-                        <action>adminhtml/rewritePlus_index/index</action>
+                        <children>
+                            <pages>
+                                <title>Manage Pages</title>
+                                <sort_order>10</sort_order>
+                                <action>adminhtml/rewritePlus_page/index</action>
+                            </pages>
+                            <groups>
+                                <title>Manage Groups</title>
+                                <sort_order>20</sort_order>
+                                <action>adminhtml/rewritePlus_group/index</action>
+                            </groups>
+                        </children>
                     </inklammern_rewriteplus>
                 </children>
             </catalog>

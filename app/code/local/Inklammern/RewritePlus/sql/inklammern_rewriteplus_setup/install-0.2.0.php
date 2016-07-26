@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS `rewriteplus_pages`;
 CREATE TABLE `rewriteplus_pages` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `store_ids` VARCHAR (255) NOT NULL,
+  `group_id` INT (11),
   `request_uri_match` VARCHAR (255) NOT NULL,
   `request_uri_original` VARCHAR (255) NOT NULL,
   `title` VARCHAR (255),
@@ -28,5 +29,17 @@ CREATE TABLE `rewriteplus_pages` (
   INDEX (`status`)
 );
 ");
+
+
+$installer->run("
+DROP TABLE IF EXISTS `rewriteplus_groups`;
+CREATE TABLE `rewriteplus_groups` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR (255),
+  `created_at` DATETIME,
+  PRIMARY KEY (`id`)
+);
+");
+
 
 $installer->endSetup();

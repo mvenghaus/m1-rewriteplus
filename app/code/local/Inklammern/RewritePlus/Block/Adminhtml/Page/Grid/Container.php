@@ -7,7 +7,8 @@ class Inklammern_RewritePlus_Block_Adminhtml_Page_Grid_Container extends Mage_Ad
     {
         $this->_blockGroup = 'inklammern_rewriteplus';
         $this->_controller = 'adminhtml_page_grid_container';
-        $this->_headerText = $this->__('Rewrite Plus');
+        $this->_headerText = $this->__('Pages');
+        $this->_addButtonLabel = $this->__('Add Page');
         parent::__construct();
     }
 

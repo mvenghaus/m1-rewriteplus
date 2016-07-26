@@ -1,5 +1,5 @@
 <?php
- 
+
 class Inklammern_RewritePlus_Model_Resource_Page_Collection extends Mage_Core_Model_Resource_Db_Collection_Abstract
 {
 
@@ -9,9 +9,9 @@ class Inklammern_RewritePlus_Model_Resource_Page_Collection extends Mage_Core_Mo
     }
 
 
-    public function addStoreFilter($storeIds){
-
-        $this->addFieldToFilter('store_ids', array('finset' => $storeIds));
+    public function addStoreFilter($storeId)
+    {
+        $this->addFieldToFilter(['store_ids', 'store_ids'], [['finset' => 0], ['finset' => $storeId]]);
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 
-class Inklammern_RewritePlus_Adminhtml_RewritePlus_IndexController extends Mage_Adminhtml_Controller_Action
+class Inklammern_RewritePlus_Adminhtml_RewritePlus_PageController extends Mage_Adminhtml_Controller_Action
 {
 
     public function indexAction()
@@ -82,7 +82,7 @@ class Inklammern_RewritePlus_Adminhtml_RewritePlus_IndexController extends Mage_
 
         foreach ($ids as $id)
         {
-            Mage::getModel('inklammern_rewriteplus/item')->load($id)->delete();
+            Mage::getModel('inklammern_rewriteplus/page')->load($id)->delete();
         }
 
         $this->_getSession()->addSuccess($this->_getHelper()->__('Page(s) successfully deleted.'));

@@ -75,6 +75,14 @@ class Inklammern_RewritePlus_Block_Adminhtml_Page_Grid_Container_Edit_Form exten
             ));
         }
 
+        // group_id
+        $fieldset->addField('group_id', 'select', [
+            'name' => 'group_id',
+            'label' => $this->_getHelper()->__('Group'),
+            'options' => Mage::getSingleton('inklammern_rewriteplus/service_group')->getSimpleArray(),
+            'required' => true
+        ]);
+
         // title
 		$fieldset->addField('title', 'text', [
 			'name' => 'title',

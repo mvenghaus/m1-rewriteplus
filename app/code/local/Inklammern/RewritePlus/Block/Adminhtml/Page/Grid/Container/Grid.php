@@ -44,6 +44,14 @@ class Inklammern_RewritePlus_Block_Adminhtml_Page_Grid_Container_Grid extends Ma
             ]
         ]);
 
+        $this->addColumn('group_id', [
+            'header' => $this->__('Group'),
+            'index' => 'group_id',
+            'width' => '100px',
+            'type' => 'options',
+            'options' => Mage::getSingleton('inklammern_rewriteplus/service_group')->getSimpleArray()
+        ]);
+
         if (!Mage::app()->isSingleStoreMode()) {
 
             $this->addColumn('store_ids', [
