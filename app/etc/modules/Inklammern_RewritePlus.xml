@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Inklammern_RewritePlus>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Inklammern_RewritePlus>
+	</modules>
+</config>

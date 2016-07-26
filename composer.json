@@ -1,0 +1,22 @@
+{
+  "name":"inklammern/rewriteplus",
+  "type":"magento-module",
+  "license":"OSL-3.0",
+  "homepage":"",
+  "description":"",
+  "authors":[
+    {
+      "name":"Marcus Venghaus",
+      "email":"info@inklammern.de"
+    }
+  ],
+  "require":{
+    "magento-hackathon/magento-composer-installer":"*"
+  },
+  "extra": {
+	"map":[
+		['app/code/local/Inklammern/RewritePlus', 'app/code/local/Inklammern/RewritePlus'],
+		['app/etc/modules/Inklammern_RewritePlus.xml', 'app/etc/modules/Inklammern_RewritePlus.xml']
+	]
+  }
+}
